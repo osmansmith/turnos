@@ -1,0 +1,36 @@
+body{
+   font-weight: normal;
+    background: #f5f5f5!important;
+ }
+.titulo{
+ font-family:Arial, Helvetica, sans-serif;   
+}
+.parrafo{
+    font-family:Arial, Helvetica, sans-serif;   
+    color:rgb(84,84,84);   
+} 
+#cabezera{
+    background:#4b4b4b;
+    color:white; 
+    padding:0 0 3% 0; 
+    margin-top:13%; 
+    height:70px; 
+    box-shadow:15px 15px 15px #9a9a9a;
+}
+#cabezera h3{
+    text-align:center;
+}
+#cuerpo{
+    padding-top:3%;
+    padding-bottom:2%;
+    background:white;
+    box-shadow:15px 15px 15px #9a9a9a;
+}
+.letra1{
+    font-weight:none;
+    color:#9a9a9a;
+}
+#pies{
+   text-align:center;
+    color:#9a9a9a; 
+}

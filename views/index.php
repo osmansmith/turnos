@@ -32,29 +32,11 @@
             </div>
           </div>
           </form>
-    <hr>
-    <small id="pies">Olvido su contraseña? <button class="btn btn-default btn-xs">Recuperar</button> </small>
+    <hr>   
     </div>         
      </div>  
       </div>                  
 <script src="<?php echo URL; ?>public/js/jquery.js"></script>  
 <script src="<?php echo URL; ?>public/js/bootstrap.min.js"></script> 
-<script>
-/*   
-$(function(){
-    $('#btn_reg').click(function()
-    {        
-    $.ajax(
-    {    
-    url: '<?php #echo URL;?>index/registro',
-    success : function(data)
-            {
-            $('#con').html(data);
-            }
-    }); 
-   });                      
-});
- */
-</script> 
 </body>
 </html>

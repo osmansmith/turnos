@@ -4,7 +4,7 @@
  # define('constante','valor')
  
   // URL es la constante que tiene la direccion raiz del proyecto
-  define('URL','http://localhost/proyecto/');
+  define('URL','http://localhost/turnos/');
   // LIBS es la constante que tiene la direccion de la libreria de clases
   define('LIBS','libs/');
   // DB_HOST es la constante que tiene el dato de host de la base de datos

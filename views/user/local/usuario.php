@@ -1,4 +1,4 @@
-<head>
+ <head>
    <link rel="stylesheet" href="<?php echo URL;?>public/css/daterangepicker.css">
 </head>
       <h4 class="ui horizontal divider header">Registrar Usuario</h4>
@@ -35,10 +35,9 @@
 <div class="ui modal empaque">
   <i class="close icon"></i>
   <div class="header">
-  lista de Empaques
+  Lista de Empaques
   </div>
-  <div class="image content">
-   
+  <div class="image content">   
     <div class="description">
            <div class="ui middle aligned divided list">
             <?php
@@ -46,13 +45,10 @@
      $result = $co->ejecutar("SELECT * FROM usuario INNER JOIN empaque ON usuario.IDUSUARIO = empaque.IDUSUARIO");
      while($fila = mysqli_fetch_array($result, MYSQLI_ASSOC)){
          print '
-  <div class="item">
-    <div class="right floated content">
-      <div class="ui button">Editar</div>
-    </div>
+  <div class="item">    
     <img class="ui avatar image" src="'.URL.''.$fila['IMGUSUARIO'].'">
     <div class="content">
-      '.ucwords($fila['NOMBREUSUARIO']).' '.ucwords($fila['APUSUARIO']).' '.ucwords($fila['AMUSUARIO']).'
+      '.ucwords($fila['NOMBREUSUARIO']).' '.ucwords($fila['APUSUARIO']).' '.ucwords($fila['AMUSUARIO']).' | '.$fila['EMAILUSUARIO'].' |  '.$fila['PASSUSUARIO'].'
     </div>
   </div>
        ';             
@@ -85,7 +81,7 @@
     </div>
     <img class="ui avatar image" src="'.URL.''.$fila['IMGUSUARIO'].'">
     <div class="content">
-      '.ucwords($fila['NOMBREUSUARIO']).' '.ucwords($fila['APUSUARIO']).' '.ucwords($fila['AMUSUARIO']).'
+      '.ucwords($fila['NOMBREUSUARIO']).' '.ucwords($fila['APUSUARIO']).' '.ucwords($fila['AMUSUARIO']).' | '.$fila['EMAILUSUARIO'].' |  '.$fila['PASSUSUARIO'].'
     </div>
   </div>
        ';             
@@ -119,7 +115,7 @@
     </div>
     <img class="ui avatar image" src="'.URL.''.$fila['IMGUSUARIO'].'">
     <div class="content">
-      '.ucwords($fila['NOMBREUSUARIO']).' '.ucwords($fila['APUSUARIO']).' '.ucwords($fila['AMUSUARIO']).'
+      '.ucwords($fila['NOMBREUSUARIO']).' '.ucwords($fila['APUSUARIO']).' | '.ucwords($fila['AMUSUARIO']).' | '.$fila['EMAILUSUARIO'].'   '.$fila['PASSUSUARIO'].'
     </div>
   </div>
        ';             

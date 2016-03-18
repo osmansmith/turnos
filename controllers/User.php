@@ -34,70 +34,7 @@
           session::destroy();
           # Se redirige a la pagina de login 
           $this->view->render('index');                          
-      }  
-      function cambio1()
-      {
-          if($_SESSION['nom'])
-          { session::setValue('panel1','<div style=" min-height: 450px;" class="four wide column">
-        <div class="ui fluid vertical menu">
-  <a id="turno" class="item active">
-    <h4 class="ui header">Turnos </h4>
-    <div class="ui yellow circular label">51</div>
-    <p>Toma tus turnos on-line.</p>
-  </a>
-  <a id="cambio" class="item">
-    <h4 class="ui header">Cambios</h4>
-     <div class="ui green circular label">51</div>
-    <p>Revisa quien quiere cambiar turnos.</p>
-  </a>
-  <a id ="regalo" class="item">
-    <h4 class="ui header">Regalos</h4>
-     <div class="ui teal circular label">51</div>
-    <p>Acepta turnos, que ofrecen como obsequio.</p>
-  </a>
-</div>
-    </div> '); 
-                session::setValue('panel2', '<div style=" min-height: 450px; padding:1% 1% 1% 1%;" class="twelve wide column">
-        <div id="contenido">
-            
-        </div>
-    </div>'); }
-         
-            $this->view->render('user/empaque');  
-      }
-      function cambio2()
-      {
-           if($_SESSION['nom'])
-          {
-          session::setValue('panel1', '<div style=" min-height: 450px; padding:1% 1% 1% 1%;" class="twelve wide column">
-        <div id="contenido">
-            
-        </div>
-    </div>'); 
-                session::setValue('panel2','<div style=" min-height: 450px;" class="four wide column">
-        <div class="ui fluid vertical menu">
-  <a id="turno" class="item active">
-    <h4 class="ui header">Turnos </h4>
-    <div class="ui yellow circular label">51</div>
-    <p>Toma tus turnos on-line.</p>
-  </a>
-  <a id="cambio" class="item">
-    <h4 class="ui header">Cambios</h4>
-     <div class="ui green circular label">51</div>
-    <p>Revisa quien quiere cambiar turnos.</p>
-  </a>
-  <a id ="regalo" class="item">
-    <h4 class="ui header">Regalos</h4>
-     <div class="ui teal circular label">51</div>
-    <p>Acepta turnos, que ofrecen como obsequio.</p>
-  </a>
-</div>
-    </div> '); 
-           }
-            $this->view->render('user/empaque');  
-      }
-      
-      
+      }      
       
       
   }

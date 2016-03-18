@@ -7,22 +7,13 @@
       function __construct()
       {
           parent::__construct();
-      }
-        function root()
-        {
-           $r =$this->db->ejecutar("SELECT * FROM root WHERE NAME='".$this->nombre."' and PASS='".$this->clave."'");
-            if($row = mysqli_fetch_assoc($r))
-            {              
-               header("location:".URL."index/admin");                
-            }
-        }
+      }       
         # metodo red() con 2 parametros para consultar en la base de datos
         function red($nom,$pas)
         {   
             $this->nombre = $nom;
             $this->clave = $pas;            
-            $this->consulta();
-            $this->root();                                                                                               
+            $this->consulta();                                                                                                      
         }        
         function consulta()
         {            
@@ -52,7 +43,8 @@
                         $con = $this->db->ejecutar($sql);
                         if ($row = mysqli_fetch_assoc($con)){  $lis = "adios"; }else{ $val += 1;}
                  }
-            header("location:".URL."index/".$this->rango[$val]."");                                                                               
+            header("location:".URL."index/".$this->rango[$val]."");
+            
         }
     }    
 ?>

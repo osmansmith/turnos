@@ -7,7 +7,7 @@
       {
           parent::__construct();
       }
-      
+      public $url = URL;
       public function registro_()
       {    
           # Array Asociativo
@@ -26,22 +26,21 @@
       }
       
       public function registro_img()
-     { 
-          $extension = "";
+     {                   
+          $extension = "";          
           foreach ($_FILES as $key ) {
           $extension = pathinfo($key['name'], PATHINFO_EXTENSION);          
           } 
           if($extension == 'png' || $extension == 'jpg' || $extension == 'jpeg'){
           foreach ($_FILES as $key ) {
           $name =time().$key['name'];
-          $path2 = 'public/img/'.$name; 
-          $path= '../proyecto/public/img/'.$name;
+          $path2 = 'public/img/'.$name;  
+          $path = '../turnos/public/img/'.$name;                                
           move_uploaded_file($key['tmp_name'],$path);
           }
           session::setValue('img',$path2);            
           $dat = [  'img' => $path2];                                   
-          $this->model->actualizar_img($dat);
-          echo URL.$path;
+          $this->model->actualizar_img($dat);         
           }else{
           echo "no";
           }
@@ -49,8 +48,7 @@
       public function registro_turno()
       {
           $datos = [                      
-              'fecha' => $_POST['fecha']
-             
+              'fecha' => $_POST['fecha']             
           ];  
           $this->model->ingresar_turno($datos);
          
@@ -65,20 +63,5 @@
               ];
           $this->model->ingresar_horario($datos);
       }
-      public function eliminarHorario()
-      {
-         
-           print "wat".print_r($_POST['che0']);
-         /* for($i=0;$i<count($_POST);$i++)
-          {
-             print "<p>  esto es lo que llego ".print_r($_POST['che'$i])."</p>";
-          }*/
-          
-        // print "que".print_r($_POST['che1']);
-          
-        /*  $datos = [
-              'valorId' => $_POST['valorId']
-          ];*/
-             // $this->model->eliminarHora($datos);
-      }
+    
   }

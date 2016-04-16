@@ -1,11 +1,16 @@
- <h4 class="ui horizontal divider header" >Registrar Turno</h4>
+<script src="<?php echo URL; ?>public/dist/jquery-1.11.3.min.js"></script>
+<script src="<?php echo URL; ?>public/dist/semantic.min.js"></script>
+<script src="<?php echo URL;?>public/js/daterangepicker.js"></script>     
+<script src="<?php echo URL;?>public/js/moment.js"></script>  
+<script src="<?php echo URL;?>public/js/moment-with-locales.js"></script>   
+  <h4 class="ui horizontal divider header" >Registrar Turno</h4>
 
  
 <form class="ui form">
 <div class="three fields"> 
 <div class="field">
        <label for="fecha"> Fecha de turno :</label>
-       <input type="text" name="fecha_turno" id="fecha_turno" placeholder="ej 02/02/2016">         
+       <input type="text" name="fecha_turno" id="fecha_turno" placeholder="ej 2016/12/01">         
 </div>
 <div class="field"> <label for="">Cantidad de cupos :</label><input type="number" name="cant" id="cant" placeholder="Registrar cantidad"></div>
 <div class="field">
@@ -41,12 +46,16 @@
           $inicio = $fila['IN_HORARIO']; 
          $final = $fila['OUT_HORARIO'];    
          print '
+         <script>
+      var fecha = moment("'.$fila['FCH_TURNO'].'", "YYYY MM DD", "es");       
+        $("#dat'.$fila['FCH_TURNO'].'").append(fecha.format("dddd DD MMMM"));        
+        </script>
   <div class="item">
     <div class="right floated content">
       <div class="ui button">Editar</div>
     </div>    
     <div class="content">
-      Fecha : '.$fila['FCH_TURNO'].' Cupos : '.$fila['CUPMAX_TURNO'].' Inicio : '.date("H:i", strtotime($inicio)).' Termino : '.date("H:i", strtotime($final)).' 
+   <strong><p id="dat'.$fila['FCH_TURNO'].'">Fecha : </p> Cupos : '.$fila['CUPMAX_TURNO'].' Inicio : '.date("H:i", strtotime($inicio)).' Termino : '.date("H:i", strtotime($final)).'</strong> 
     </div>
   </div>
        ';             
@@ -56,13 +65,8 @@
         </div>    
 
 
-<script src="<?php echo URL; ?>public/dist/jquery-1.11.3.min.js"></script>
-<script src="<?php echo URL; ?>public/dist/semantic.min.js"></script>
-<script src="<?php echo URL;?>public/js/daterangepicker.js"></script>     
-<script src="<?php echo URL;?>public/js/moment.js"></script>  
-<script src="<?php echo URL;?>public/js/moment-with-locales.js"></script>       
+    
 <script>
-$('.ui.dropdown').dropdown(); 
 $('#fecha_turno').hover(function(){$('#fecha_turno').daterangepicker({ singleDatePicker: true,format: 'YYYY/MM/DD'},''); return false; },1000);
 $('#btn_guardar_turno').click(function(e){
     e.preventDefault();

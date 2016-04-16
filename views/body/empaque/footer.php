@@ -8,6 +8,7 @@
  $('.ui.accordion').accordion();    
  $('.ui.dropdown').dropdown();    
  $("#turno").click(function(){$.post('<?php echo URL;?>empaque/turno','',function(data){ $('#contenido').html(data)}); });  
+ 
  $("#cambio").click(function(){$.post('<?php echo URL;?>empaque/cambio','',function(data){ $('#contenido').html(data)}); });    
  $("#regalo").click(function(){$.post('<?php echo URL;?>empaque/regalo','',function(data){ $('#contenido').html(data)}); });  
  $.post('<?php echo URL;?>empaque/turno','',function(data){ $('#contenido').html(data)});   

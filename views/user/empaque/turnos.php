@@ -3,18 +3,7 @@
 <hr>
 <h3 style="text-align:center;">Elige los turnos disponibles</h3> 
 <div id="contenido">
-<button id="enero" class="ui button">Enero</button>
-<button id="febrero" class="ui button">Febrero</button>
-<button id="marzo" class="ui button">Marzo</button>
-<button id="abril" class="ui button">Abril</button>
-<button id="mayo" class="ui button">Mayo</button>
-<button id="junio" class="ui button">Junio</button>
-<button id="julio" class="ui button">Julio</button>
-<button id="agosto" class="ui button">Agosto</button>
-<button id="septiembre" class="ui button">Septiembre</button>
-<button id="octubre" class="ui button">Octubre</button>
-<button id="noviembre" class="ui button">Noviembre</button>
-<button id="diciembre" class="ui button">Diciembre</button>
+
 </div> 
 <script>
     /* $('.ui.dropdown').dropdown();    
@@ -82,14 +71,5 @@
         }                
         var datostotales =datoshora+', Día '+datosdias;
          $("#text").text(datostotales);
-    }*/
-    $("#enero").click(function()
-     {
-       $.ajax(
-       {			 
-			type: "POST",
-			url: "<?php echo URL;?>meses/enero",						
-			success: function(data){$('#contenido').html(data);}											                      
-			});	 
-       });  
+    }*/   
 </script>

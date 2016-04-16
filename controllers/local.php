@@ -10,9 +10,17 @@
      {
         $this->view->render('user/local/turnos');    
      }
-     function usuario()
+          function horas()
      {
-        $this->view->render('user/local/usuario');    
+        $this->view->render('user/local/horas');    
+     }
+      function c_turnos()
+     {
+        $this->view->render('user/local/c_turnos');    
+     }    
+     function usuario()
+     {        
+        $this->view->render('user/local/usuario');            
      }
      function mensaje()
      {

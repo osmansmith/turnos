@@ -1,14 +1,4 @@
-  <head>
-   <link rel="stylesheet" href="<?php echo URL;?>public/css/daterangepicker.css">
-   <script src="<?php echo URL;?>public/js/daterangepicker.js"></script>     
-<script src="<?php echo URL;?>public/js/moment.js"></script>     
-<script src="<?php echo URL;?>public/js/moment-with-locales.js"></script>        
-</head>
-       
-     
-
-
-<h4 class="ui horizontal divider header" >Registrar Horario</h4>
+ <h4 class="ui horizontal divider header" >Registrar Horario</h4>
 
  
 <form class="ui form">
@@ -123,8 +113,7 @@
          $cont++;
      }
     ?>
-     
-    
+         
 <div class="field"><button id="btn_eliminar" class="blue ui button" onclick="btn_boton()">Eliminar fecha</button></div>    
 
 </form>  
@@ -134,9 +123,9 @@
     <div class="ui cancel button">Cancel</div>  
   </div>
 </div>
-<script>    
-$('.ui.dropdown').dropdown({on: 'click'});
-$('.ui.checkbox').checkbox();
+<script src="<?php echo URL;?>public/js/moment.js"></script>  
+<script src="<?php echo URL;?>public/js/moment-with-locales.js"></script>       
+<script>
 $('#birthday').hover(function(){$('#birthday').daterangepicker({ singleDatePicker: true,format: 'YYYY/MM/DD'},''); return false; },1000);
 $('#btn_fecha').click(function(e)
 {
@@ -149,74 +138,11 @@ $('#btn_fecha').click(function(e)
              $('#birthday').val("");
          }else{
              alert("porfavor escriba una fecha :( ");
-         }
-    
+         }    
  });
-$('#btn_crear_fecha').click(function(e){ e.preventDefault(); $('.ui.modal.crear').modal('show'); });
-$('#btn_horario').click(function()
-{    
-     var fech = $('#selfecha').val();  
-     var cant = $('#cant').val();
-     var horain = $('#horain').val();
-     var horaout = $('#horaout').val();
-     var registro = {
-         'fech' : fech,
-         'cant' : cant,
-         'horain' : horain,
-         'horaout' : horaout
-     };
-    
-     $.post('<?php echo URL;?>registro/registro_horario',registro,function(dat){alert('datos enviados');});
- });  
-$('#selturnos').change(function()
-{
-    var valor = $( this ).val();
-    var valores = {
-        'aidi' : valor
-    };
-    if(valor == "")
-        {    
-        }else{
-     $.post("<?php echo URL;?>local/verTurnos",valores,function(data){ $("#turnos").html(data)});      
-        }
-});
-$('#eliminar').click(function(e)
-{
-    e.preventDefault();    
-    $('.ui.modal.eliminar').modal('show');
-           
-   /* v = $('#selturnos').val();
-    valor = { 'valorId' : v }
-    if(v !== "")                   
-        {            
-         $.post('<?php echo URL;?>registro/eliminarHorario',valor,function(dat){alert('fecha eliminada');});   
-        }*/
-});
-function btn_boton()
-{
-   var contador = <?php echo $cont;?>;  
-    var chek = new Array();  
-  // var chek = [];
-    var i = 0;
-    var el;
-    var it;
-      for( i ; i<contador;i++)
-        {    
-            if($('input:checkbox[id=ch'+i+']:checked').val() != undefined)
-                { 
-                    el = $('input:checkbox[id=ch'+i+']:checked').val(); 
-            //chek[i] = $('input:checkbox[id=ch'+i+']:checked').val();             
-            
-                chek['che'+i] = el;
-                }
-        }
-       
-          
-         var fechasAr = JSON.parse(JSON.stringify(chek));         
-     console.log(chek);     
-    $.post('<?php echo URL;?>registro/eliminarHorario',chek,function(dat){alert(dat);});   
-           
-    }
-    /* var fechaEs = moment('2016-02-23', "YYYY MM DD", "es");
- console.log("Fecha con localización :"+ fechaEs.format("dddd DD MMMM YYYY"));*/        
-</script>
+$('#btn_crear_fecha').click(function(e){ 
+    e.preventDefault();
+    $('.ui.modal.crear').modal('show'); });
+</script>  
+
+        

@@ -19,12 +19,12 @@
               'fono' => $_POST['fono'],
               'direccion' => $_POST['direccion'],
               'email' => $_POST['email'],
-              'pass' => $_POST['pass'],
-              'tipo' => $_POST['tipo']
+              'pass' => md5($_POST['pass']),
+              'tipo' => $_POST['tipo'],
+              'estado' => $_POST['estado']
           ];                                             
               $this->model->registrar($datos);                       
-      }
-      
+      }      
       public function registro_img()
      {                   
           $extension = "";          
@@ -45,23 +45,23 @@
           echo "no";
           }
       }
-      public function registro_turno()
+      public function registro_horas()
       {
           $datos = [                      
-              'fecha' => $_POST['fecha']             
+              'horain' => $_POST['horain'],
+              'horaout' => $_POST['horaout']    
           ];  
-          $this->model->ingresar_turno($datos);
+          $this->model->ingresar_horas($datos);
          
       }
-      public function registro_horario()
+      public function registro_turno()
       {
            $datos = [
-              'fech' => $_POST['fech'],
+              'fecha_turno' => $_POST['fecha_turno'],
               'cant' => $_POST['cant'],
-              'horain' => $_POST['horain'],
-              'horaout' => $_POST['horaout']
+              'sel_hora' => $_POST['sel_hora']              
               ];
-          $this->model->ingresar_horario($datos);
+          $this->model->ingresar_turno($datos);
       }
     
   }

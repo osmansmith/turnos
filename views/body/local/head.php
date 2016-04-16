@@ -8,6 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
  <title> <?php echo ucwords(session::getValue('nom'));?> <?php echo ucwords(session::getValue('ap'));?></title>
 <link rel="Stylesheet" href="<?php print URL; ?>public/dist/semantic.min.css"/>
+<link rel="stylesheet" href="<?php echo URL;?>public/css/daterangepicker.css"/>
 </head>
 <body>
 <div class="ui modal imagen">
@@ -113,11 +114,11 @@
   </div>
   <div class="content">
     <p class="transition hidden"><div class="ui vertical text menu">  
-  <a id="registro" class="item active">
-    Registrar Turnos
-  </a>
-  <a class="item">
-    Editar Turnos
+  <a id="horas" class="item active">
+    Crear Horario Pre.
+  </a>  
+  <a id="c_turnos" class="item">
+    Crear Turnos
   </a>
   <a class="item">
     Eliminar turnos

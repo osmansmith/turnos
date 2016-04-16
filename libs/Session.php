@@ -5,7 +5,7 @@ class session
     # metodo estatico para avilitar las sesiones
     static function init()
     {   
-        # funcion para avilitar las variables de sesion
+        # funcion para habilitar las variables de sesion
         session_start();                
     }
     # metodo estatico para eliminar las sesiones activas del sistema

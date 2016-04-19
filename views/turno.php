@@ -4,37 +4,113 @@
 <script src="<?php echo URL;?>public/js/moment.js"></script>  
 <script src="<?php echo URL;?>public/js/moment-with-locales.js"></script>    
 
-<div class="ui grid">
-  <div  class="two wide column"></div>
-<?php
- $con = new Conexion(DB_HOST,DB_NAME,DB_USER,DB_PASS);
-     $result = $con->ejecutar("SELECT * FROM turno");
-     while($fila = mysqli_fetch_array($result, MYSQLI_ASSOC)){         
-         print "<script>
-      var fecha = moment('".$fila['FCH_TURNO']."', 'YYYY MM DD', 'es');       
-        $('#dat".$fila['FCH_TURNO']."').text(fecha.format('dddd DD'));        
-        </script>
-         <div style='border:1px solid black;' id='dat".$fila['FCH_TURNO']."' class='two wide column' ></div>";             
-        }     
-?>
-</div>
+<!-- esto es el horario de la toma de turnos-->
+<style>
+    tr,td{
+        text-align: center;
+    }
+</style>
 
-<?php 
-     $result = $con->ejecutar("SELECT IN_HORARIO FROM horario WHERE ID_HORARIO = ALL(SELECT ID_HORARIO FROM turno)");
-     while($fila = mysqli_fetch_array($result, MYSQLI_ASSOC)){         
-         print "
-          <div class='ui grid'>  
-         <div class='two wide column' >".$fila['IN_HORARIO']."</div> ";             
-        }     
-?>
-<?php
-     $result = $con->ejecutar("SELECT CUPMAX_TURNO FROM turno WHERE ID_HORARIO");
-      while($fila = mysqli_fetch_array($result, MYSQLI_ASSOC)){         
-         print "
-         <div class='two wide column' ><button id='".$fila['CUPMAX_TURNO']."' >".$fila['CUPMAX_TURNO']."</button></div> ";             
-        }  
+<table class="ui unstackable table" >
+ <thead>
+     <tr>
+        <th></th>
+        <th>Lunes</th>
+        <th>Martes</th>
+        <th>Miercoles</th>
+        <th>Jueves</th>
+        <th>Viernes</th>
+        <th>Sabado</th>
+        <th>Domingo</th>              
+     </tr>
+ </thead>    
+    <tbody>
+        <tr>
+            <td>8:30</td>
+            <td><input type="button" id="btnn" value="3"/></td>
+            <td><button>3</button></td>
+            <td><button>3</button></td>
+            <td><button>3</button></td>
+            <td><button>3</button></td>
+            <td><button>3</button></td>
+            <td><button>3</button></td>
+        </tr>
+        <tr>
+            <td>8:30</td>
+            <td><button>3</button></td>
+            <td><button>3</button></td>
+            <td><button>3</button></td>
+            <td><button>3</button></td>
+            <td><button>3</button></td>
+            <td><button>3</button></td>
+            <td><button>3</button></td>
+        </tr>
+        <tr>
+            <td>8:30</td>
+            <td><button>3</button></td>
+            <td><button>3</button></td>
+            <td><button>3</button></td>
+            <td><button>3</button></td>
+            <td><button>3</button></td>
+            <td><button>3</button></td>
+            <td><button>3</button></td>
+        </tr>
+        <tr>
+            <td>8:30</td>
+            <td><button>3</button></td>
+            <td><button>3</button></td>
+            <td><button>3</button></td>
+            <td><button>3</button></td>
+            <td><button>3</button></td>
+            <td><button>3</button></td>
+            <td><button>3</button></td>
+        </tr>
+        <tr>
+            <td>8:30</td>
+            <td><button>3</button></td>
+            <td><button>3</button></td>
+            <td><button>3</button></td>
+            <td><button>3</button></td>
+            <td><button>3</button></td>
+            <td><button>3</button></td>
+            <td><button>3</button></td>
+        </tr>
+    </tbody>                    
+</table>
+ <script>
+$("#btnn").click(function(){
+    var btn = $("#btnn").val();   
+    var num = 1;   
+   
+   if(btn>=1){
+     btn = btn-1;       
+   } 
+    if(btn == 1){
+         $("#btnn").addClass("orange");  
+    }
+    
+    $("#btnn").attr("value",btn);
+     if(btn == 0){
+       
+        //$("#btnn").removeClass("green");
+        $("#btnn").addClass("red");     
+        alert("se acabaron los turnos");
+   } 
+});
+
+if($("#btnn").attr("value") == 0)
+    {
+         $("#btnn").removeClass();
+        $("#btnn").addClass("ui button red");
+    }else{
+        $("#btnn").removeClass();
+        $("#btnn").addClass("ui button green");
+    }
      
-     ?>
-</div>
- 
+     
+     
+     
+     
+     
+</script>
 

@@ -1,6 +1,3 @@
-<head>
-   <link rel="stylesheet" href="<?php echo URL;?>public/css/daterangepicker.css">
-</head>
       <h4 class="ui horizontal divider header">Registrar Usuario</h4>
     
   <form id="form-em" class="ui form">
@@ -20,9 +17,9 @@
   <div class="field"><input type="password" id="pass" placeholder="Ingrese Contraseña"></div>
   <div class="field">
   <select name="used" id="used" required>
-  <option value="empaque"selected>Empaque</option>
-  <option value="piocha">Piocha</option>
-  <option value="encargadoempaque">Encargado</option>
+  <option value="emp_pioch"selected>Empaque</option>
+  <option value="emp_pioch">Piocha</option>
+  <option value="eemp">Encargado</option>
   </select></div>
       </div>
   <div class="inline field"><button id="btn_en" class="blue ui button">Guardar</button></div>
@@ -35,24 +32,20 @@
 <div class="ui modal empaque">
   <i class="close icon"></i>
   <div class="header">
-  lista de Empaques
+  Lista de Empaques
   </div>
-  <div class="image content">
-   
+  <div class="image content">   
     <div class="description">
            <div class="ui middle aligned divided list">
             <?php
      $co = new Conexion(DB_HOST,DB_NAME,DB_USER,DB_PASS);
-     $result = $co->ejecutar("SELECT * FROM usuario INNER JOIN empaque ON usuario.IDUSUARIO = empaque.IDUSUARIO");
+     $result = $co->ejecutar("SELECT * FROM users WHERE ID_USER = ALL (SELECT ID_USER FROM emp_pioch WHERE TIPO_EP = 0 )");
      while($fila = mysqli_fetch_array($result, MYSQLI_ASSOC)){
          print '
-  <div class="item">
-    <div class="right floated content">
-      <div class="ui button">Editar</div>
-    </div>
-    <img class="ui avatar image" src="'.URL.''.$fila['IMGUSUARIO'].'">
+  <div class="item">    
+    <img class="ui avatar image" src="'.URL.''.$fila['IMG_USER'].'">
     <div class="content">
-      '.ucwords($fila['NOMBREUSUARIO']).' '.ucwords($fila['APUSUARIO']).' '.ucwords($fila['AMUSUARIO']).'
+      '.ucwords($fila['NOM_USER']).' '.ucwords($fila['AP_USER']).' '.ucwords($fila['AM_USER']).' | '.$fila['CORREO_USER'].' |  '.$fila['PASS_USER'].'
     </div>
   </div>
        ';             
@@ -76,16 +69,16 @@
     <div class="description">
         <div class="ui middle aligned divided list">     
    <?php    
-     $result = $co->ejecutar("SELECT * FROM usuario INNER JOIN piocha ON usuario.IDUSUARIO = piocha.IDUSUARIO");
+     $result = $co->ejecutar("SELECT * FROM users WHERE ID_USER = ALL (SELECT ID_USER FROM emp_pioch WHERE TIPO_EP = 1 )");
      while($fila = mysqli_fetch_array($result, MYSQLI_ASSOC)){
          print '
   <div class="item">
     <div class="right floated content">
       <div class="ui button">Editar</div>
     </div>
-    <img class="ui avatar image" src="'.URL.''.$fila['IMGUSUARIO'].'">
+    <img class="ui avatar image" src="'.URL.''.$fila['IMG_USER'].'">
     <div class="content">
-      '.ucwords($fila['NOMBREUSUARIO']).' '.ucwords($fila['APUSUARIO']).' '.ucwords($fila['AMUSUARIO']).'
+      '.ucwords($fila['NOM_USER']).' '.ucwords($fila['AP_USER']).' '.ucwords($fila['AM_USER']).' | '.$fila['CORREO_USER'].' |  '.$fila['PASS_USER'].'
     </div>
   </div>
        ';             
@@ -110,16 +103,16 @@
            
         <div class="ui middle aligned divided list">     
    <?php    
-     $result = $co->ejecutar("SELECT * FROM usuario INNER JOIN encargadoempaque ON usuario.IDUSUARIO = encargadoempaque.IDUSUARIO");
+     $result = $co->ejecutar("SELECT * FROM users, eemp WHERE users.ID_USER = eemp.ID_USER");
      while($fila = mysqli_fetch_array($result, MYSQLI_ASSOC)){
          print '
   <div class="item">
     <div class="right floated content">
       <div class="ui button">Editar</div>
     </div>
-    <img class="ui avatar image" src="'.URL.''.$fila['IMGUSUARIO'].'">
+    <img class="ui avatar image" src="'.URL.''.$fila['IMG_USER'].'">
     <div class="content">
-      '.ucwords($fila['NOMBREUSUARIO']).' '.ucwords($fila['APUSUARIO']).' '.ucwords($fila['AMUSUARIO']).'
+      '.ucwords($fila['NOM_USER']).' '.ucwords($fila['AP_USER']).' | '.ucwords($fila['AM_USER']).' | '.$fila['CORREO_USER'].'   '.$fila['PASS_USER'].'
     </div>
   </div>
        ';             
@@ -154,8 +147,13 @@ $('#btn_en').click(function(e)
         'direccion' : direccion,
         'email' : email,
         'pass' : pass,
-        'tipo' : tipo
-    };           
+        'tipo' : tipo,
+        'estado' : 1
+    }
+    
+    
+    if(nombre != '' || apellidop != '' || apellidom != '' || fono != '' || direccion != '' || email != '' || pass != '' )
+        {      
     $.post('<?php echo URL;?>registro/registro_',formData,function(algo){
         $('#nom').val('');
         $('#app').val('');
@@ -165,9 +163,15 @@ $('#btn_en').click(function(e)
         $('#ema').val('');
         $('#pass').val('');
         $('#used').val('');        
-        alert('datos enviados')});     
-       });
+        alert('datos enviados');
+    });
+    }else{
+        alert('porfavor complete todos los campos'); 
+            return false;
+    }
+});
+                   
 $('#emp').click(function(e){ e.preventDefault(); $('.ui.modal.empaque').modal('show');});
 $('#pio').click(function(e){ e.preventDefault(); $('.ui.modal.piocha').modal('show');});
-$('#enc').click(function(e){ e.preventDefault(); $('.ui.modal.encargado').modal('show');});
+$('#enc').click(function(e){ e.preventDefault(); $('.ui.modal.encargado').modal('show');});    
 </script>

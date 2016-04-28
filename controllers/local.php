@@ -8,19 +8,27 @@
      
      function turnos()
      {
-        $this->view->render('forms/turnos');    
+        $this->view->render('user/local/turnos');    
      }
-     function usuario()
+          function horas()
      {
-        $this->view->render('forms/usuario');    
+        $this->view->render('user/local/horas');    
+     }
+      function c_turnos()
+     {
+        $this->view->render('user/local/c_turnos');    
+     }    
+     function usuario()
+     {        
+        $this->view->render('user/local/usuario');            
      }
      function mensaje()
      {
-        $this->view->render('forms/mensaje');    
+        $this->view->render('user/local/mensaje');    
      }
      function verTurnos()
      {
-         $this->view->render('forms/ver');
+         $this->view->render('user/local/ver');
      }
                         
  }

@@ -1,3 +1,4 @@
+
 <?php
 // Se incluye las constantes 
 require "config.php";

@@ -10,6 +10,10 @@
      {
         $this->view->render('user/empaque/turnos');    
      }
+      function toma_turnos()
+     {
+        $this->view->render('turno');    
+     }
      function cambio()
      {
         $this->view->render('user/empaque/cambio');    

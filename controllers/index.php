@@ -11,17 +11,12 @@
       {
           # el metodo render admite un parametro que es la pagina de la carpeta views sin el .php
           $this->view->render('index');
-      }
-       # metodo inicio
-      function admin()
-      {
-           # el metodo render admite un parametro que es la pagina de la carpeta views sin el .php
-          $this->view->render('admin/admin');
-      }
+      }       
       function encargadolocal()
-      {
-           # el metodo render admite un parametro que es la pagina de la carpeta views sin el .php
+      {           
+          $this->view->render('body/local/head');
           $this->view->render('user/local');
+          $this->view->render('body/local/footer');
       }
       function encargadoempaque()
       {
@@ -29,17 +24,16 @@
           $this->view->render('user/encargado');
       }
       function piocha()
-      {
-           # el metodo render admite un parametro que es la pagina de la carpeta views sin el .php
+      {         
+          $this->view->render('body/empaque/head');
           $this->view->render('user/piocha');
+          $this->view->render('body/empaque/footer');
       }           
       function empaque()
-      {
-          if(isset($_POST['location']))
-          {
-          echo "<script>alert('".$_POST['location']."')</script>";
-          }
-         $this->view->render('user/empaque');  
+     {   
+         $this->view->render('body/empaque/head');
+         $this->view->render('user/empaque'); 
+         $this->view->render('body/empaque/footer');
       } 
       
       

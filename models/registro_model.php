@@ -49,9 +49,10 @@
        {
             $fecha_turno = $datos['fecha_turno'];
             $cant = $datos['cant'];
-            $sel_hora = $datos['sel_hora'];           
+            $sel_hora = $datos['sel_hora'];  
+            $sem = $datos['sem'];
           
-$this->db->ejecutar("INSERT INTO turno(ID_HORARIO,CUPMAX_TURNO,FCH_TURNO)VALUES(".$sel_hora.",".$cant.",'".$fecha_turno."')"); 
+$this->db->ejecutar("INSERT INTO turno(ID_HORARIO,SEM_TURNO,CUPMAX_TURNO,FCH_TURNO)VALUES(".$sel_hora.",".$sem.",".$cant.",'".$fecha_turno."')"); 
        }
        
        function eliminarHora($datos)

@@ -103,7 +103,7 @@
            
         <div class="ui middle aligned divided list">     
    <?php    
-     $result = $co->ejecutar("SELECT * FROM users, eemp WHERE user.ID_USER = eemp.ID_USER");
+     $result = $co->ejecutar("SELECT * FROM users, eemp WHERE users.ID_USER = eemp.ID_USER");
      while($fila = mysqli_fetch_array($result, MYSQLI_ASSOC)){
          print '
   <div class="item">

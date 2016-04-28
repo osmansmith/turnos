@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="<?php echo URL;?>public/css/daterangepicker.css"/>
 </head>
 <body>
+
 <div class="ui modal imagen">
  <i class="close icon"></i>
   <div class="header">Cambiar foto de Perfil</div>
@@ -42,6 +43,7 @@
     </div>            
 </div>
 </div> 
+
 <div class="ui container">
      <div class="ui stackable two column grid">    
       <div style=" min-height: 70px; padding-top:2%;" class="twelve wide column">

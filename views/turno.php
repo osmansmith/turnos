@@ -15,13 +15,13 @@
  <thead>
      <tr>
         <th></th>
-        <th>Lunes</th>
-        <th>Martes</th>
-        <th>Miercoles</th>
-        <th>Jueves</th>
-        <th>Viernes</th>
-        <th>Sabado</th>
-        <th>Domingo</th>              
+        <?php
+     $co = new Conexion(DB_HOST,DB_NAME,DB_USER,DB_PASS);
+     $result = $co->ejecutar("SELECT * FROM users WHERE ID_USER = ALL (SELECT ID_USER FROM emp_pioch WHERE TIPO_EP = 0 )");
+     while($fila = mysqli_fetch_array($result, MYSQLI_ASSOC)){
+         print '<th>'.fila.'</th>';             
+        }        
+    ?>           
      </tr>
  </thead>    
     <tbody>

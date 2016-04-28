@@ -59,7 +59,8 @@
            $datos = [
               'fecha_turno' => $_POST['fecha_turno'],
               'cant' => $_POST['cant'],
-              'sel_hora' => $_POST['sel_hora']              
+              'sel_hora' => $_POST['sel_hora'],
+               'sem' => $_POST['sem']
               ];
           $this->model->ingresar_turno($datos);
       }
